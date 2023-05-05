@@ -1,2 +1,2 @@
-# arcgis-projects-python
-My projects involving arcgis
+# gis-projects-python
+My projects involving GIS and arcgis
