@@ -1,0 +1,14 @@
+import os
+import subprocess
+root_vid_directory = r"F:/gopro/"
+
+for path, directories, files in os.walk(root_vid_directory):
+    for video_file in files:
+        if video_file.endswith("MP4"):
+            full_mp4_path = os.path.join(path, video_file)
+            full_gpx_output_path = full_mp4_path.replace(".MP4", ".GPX")
+            print(f"Processing: {full_mp4_path}")
+            with open(full_gpx_output_path, "w") as gpx_file:
+                exiftool_command = ["exiftool", "-ee", "-T", "-p", ".\gpx.fmt", full_mp4_path]
+                subprocess.run(exiftool_command, stdout=gpx_file)
+            print(f"Succesfully created: {full_gpx_output_path}\n")
